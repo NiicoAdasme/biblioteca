@@ -1,6 +1,10 @@
 <?php
 
+use TablaRolSeeder;
+use TablaPermisoSeeder;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Schema;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +15,21 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $this->truncateTablas([
+            'rol',
+            'permiso'
+        ]);
+        $this->call(TablaRolSeeder::class);
+        $this->call(TablaPermisoSeeder::class);
+    }
+
+    protected function truncateTablas(array $tablas){
+        Schema::disableForeignKeyConstraints();
+        //DB::statement('SET FOREIGN_KEY_CHECKS = 0;');
+        foreach($tablas as $tabla){
+            DB::table($tabla)->truncate();
+        }
+        Schema::enableForeignKeyConstraints();
+        //DB::statement('SET FOREIGN_KEY_CHECKS = 1;');
     }
 }
