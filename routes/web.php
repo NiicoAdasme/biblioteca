@@ -19,10 +19,12 @@ use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
     return view('welcome'); 
 });*/
 
-Route::view('/', 'welcome');
+//Route::view('/', 'welcome');
 
 Route::get('permiso/{nombre?}/{edad?}', 'PermisoController@index')->where(['nombre'=>'[A-Za-z]+', 'edad' => '[0-9]+'])->name('permiso'); // ruteo desde controlador
 
 Route::get('admin/sistema/permiso', 'PermisoController@index')->name('permiso'); 
 /* Lo referencio como {{route('permiso')}} en la view
 Evito recordar la url que es admin/sistema/permiso {{url(''admin/sistema/permiso)}}*/
+
+Route::get('/', 'InicioController@index');
