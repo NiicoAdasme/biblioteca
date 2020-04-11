@@ -21,6 +21,8 @@ class CrearTablaUsuarioRol extends Migration
             $table->foreign('usuario_id','fk_usuario_id')->references('id')->on('usuario')->onDelete('cascade')->onUpdate('cascade');
             $table->boolean('estado');
             $table->timestamps();
+            $table->charset = 'utf8mb4';
+            $table->collation = 'utf8mb4_spanish_ci';
         });
     }
 

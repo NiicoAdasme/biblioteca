@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CrearTablaPermiso extends Migration
+class CrearTablaMenuRol extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CrearTablaPermiso extends Migration
      */
     public function up()
     {
-        Schema::create('permiso', function (Blueprint $table) {
-            $table->id();
-            $table->string('nombre',255);
-            $table->string('slug',255);
-            $table->timestamps();
+        Schema::create('menu_rol', function (Blueprint $table) {
+            $table->unsignedInteger('rol_id');
+            $table->foreign('rol_id')->references('id')->on('rol')->onDelete('cascade')->onUpdate('cascade');
+            $table->unsignedInteger('menu_id');
+            $table->foreign('menu_id')->references('id')->on('menu')->onDelete('cascade')->onUpdate('cascade');
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';
         });
@@ -30,6 +30,6 @@ class CrearTablaPermiso extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('permiso');
+        Schema::dropIfExists('menu_rol');
     }
 }
