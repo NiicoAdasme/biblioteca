@@ -30,4 +30,54 @@
 </div>
 @endsection
 
+@section('scripts')
+<script type="text/javascript">
+    $(document).ready(function () {
+      $.validator.setDefaults({
+        submitHandler: function () {
+          alert( "Form successful submitted!" );
+        }
+      });
+      $('#quickForm').validate({
+        rules: {
+          nombre: {
+            required: true
+          },
+          url: {
+            required: true,
+            maxlength: 50
+          },
+          icono: {
+            required: true,
+            maxlength: 50
+          },
+        },
+        messages: {
+          nombre: {
+            required: "Por favor ingrese un nombre"
+          },
+          url: {
+            required: "Por favor ingrese una URL",
+            maxlength: "El maximo de caracteres es 50"
+          },
+          icono: {
+              required: "Por favor ingrese un icono",
+              maxlength: "El maximo de caracteres es 50"
+          }
+        },
+        errorElement: 'span',
+        errorPlacement: function (error, element) {
+          error.addClass('invalid-feedback');
+          element.closest('.form-group').append(error);
+        },
+        highlight: function (element, errorClass, validClass) {
+          $(element).addClass('is-invalid');
+        },
+        unhighlight: function (element, errorClass, validClass) {
+          $(element).removeClass('is-invalid');
+        }
+      });
+    });
+    </script>
+@endsection
 
