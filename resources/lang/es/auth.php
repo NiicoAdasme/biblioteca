@@ -1,17 +1,19 @@
 <?php
 
 return [
-    /*
-    |--------------------------------------------------------------------------
-    | Authentication Language Lines
-    |--------------------------------------------------------------------------
-    |
-    | The following language lines are used during authentication for various
-    | messages that we need to display to the user. You are free to modify
-    | these language lines according to your application's requirements.
-    |
-    */
 
-    'failed'   => 'Estas credenciales no coinciden con nuestros registros.',
-    'throttle' => 'Demasiados intentos de acceso. Por favor intente nuevamente en :seconds segundos.',
+	/*
+	|--------------------------------------------------------------------------
+	| Autenticación de líneas de lenguaje
+	|--------------------------------------------------------------------------
+	|
+  | Las siguientes líneas de idioma se utilizan durante la autenticación para varios
+  | Mensajes que necesitamos mostrar al usuario. Eres libre de modificar
+  | Estas líneas lingüísticas de acuerdo a los requisitos de su aplicación.
+	|
+	*/
+
+    'failed' => 'Las credenciales introducidas son incorrectas.',
+    'throttle' => 'Demasiados intentos de acceso. Inténtelo de nuevo en :seconds segundos.',
+
 ];

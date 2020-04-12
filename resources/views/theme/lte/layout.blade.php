@@ -18,6 +18,8 @@
 
         <link rel="shortcut icon" href="{{asset("assets/$theme/dist/img/biblioteca.png")}}" type="image/x-icon">
 
+        <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
+
         @yield('styles')
 
     </head>

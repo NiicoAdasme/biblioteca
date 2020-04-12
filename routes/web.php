@@ -1,5 +1,6 @@
 <?php
 
+use App\Admin\Rol;
 use Illuminate\Routing\Route as RoutingRoute;
 use Illuminate\Support\Facades\Route;
 use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
@@ -30,7 +31,10 @@ Evito recordar la url que es admin/sistema/permiso {{url(''admin/sistema/permiso
 Route::get('/', 'InicioController@index');
 //Route::get('permiso', 'Admin\PermisoController@index')->name('permiso');
 
-Route::group(['namespace' => 'Admin'], function () {
+Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
     Route::get('permiso', 'PermisoController@index')->name('permiso');
     Route::get('permiso/crear', 'PermisoController@crear')->name('crear_permiso');
+    Route::get('menu', 'MenuController@index')->name('menu');
+    Route::get('menu/crear', 'MenuController@crear')->name('crear_menu');
+    Route::post('menu', 'MenuController@guardar')->name('guardar_menu');
 });
