@@ -52,9 +52,21 @@
         <!-- AdminLTE App -->
         <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
 
+        <!-- AdminLTE App -->
+        <script src="{{asset("assets/$theme/dist/js/adminlte.min.js")}}"></script>
+
+        <!-- AdminLTE for demo purposes -->
+        <script src="{{asset("assets/$theme/dist/js/demo.js")}}"></script>
+
+        <!-- Formulario de validación -->
         <script src="{{asset("assets/$theme/plugins/jquery-validation/jquery.validate.min.js")}}"></script>
 
         <script src="{{asset("assets/$theme/plugins/jquery-validation/additional-methods.min.js")}}"></script>
+
+        <!-- SweetAlert2 -->
+        <script src="{{asset("assets/$theme/plugins/sweetalert2/sweetalert2.min.js")}}"></script>
+        <!-- Toastr -->
+        <script src="{{asset("assets/$theme/plugins/toastr/toastr.min.js")}}"></script>
 
         @yield('scripts')
     </body>

@@ -15,7 +15,7 @@
                 <div class="card-header">
                     <h3 class="card-title">Crear Menú</h3>
                 </div>
-            <form action="{{route('guardar_menu')}}" role="form" method="POST" id="quickForm">
+            <form action="{{route('guardar_menu')}}" role="form" method="POST" id="quickForm" autocomplete="off">
                     @csrf
                     <div class="card-body">
                         @include('admin.menu.form')
@@ -31,11 +31,13 @@
 @endsection
 
 @section('scripts')
-<script type="text/javascript">
+<script type="text/javascript"> 
     $(document).ready(function () {
       $.validator.setDefaults({
-        submitHandler: function () {
-          alert( "Form successful submitted!" );
+        submitHandler: function (form) {
+          //alert( "Form successful submitted!" );
+          //var $form = $('quickForm');
+          form.submit();
         }
       });
       $('#quickForm').validate({
@@ -78,6 +80,6 @@
         }
       });
     });
-    </script>
+</script>
 @endsection
 

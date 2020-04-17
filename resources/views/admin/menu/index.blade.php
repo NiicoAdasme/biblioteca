@@ -5,5 +5,5 @@
 @endsection
 
 @section('contenido')
-    Index de menú
+    Index Menú
 @endsection

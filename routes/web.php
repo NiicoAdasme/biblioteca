@@ -28,13 +28,16 @@ Route::get('admin/sistema/permiso/{nombre?}/{edad?}', 'PermisoController@index')
 /* Lo referencio como {{route('permiso')}} en la view
 Evito recordar la url que es admin/sistema/permiso {{url(''admin/sistema/permiso)}}*/
 
-Route::get('/', 'InicioController@index');
-//Route::get('permiso', 'Admin\PermisoController@index')->name('permiso');
+//Route::group(array('https'), function () {
+    Route::get('/', 'InicioController@index');
+    //Route::get('permiso', 'Admin\PermisoController@index')->name('permiso');
 
-Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
-    Route::get('permiso', 'PermisoController@index')->name('permiso');
-    Route::get('permiso/crear', 'PermisoController@crear')->name('crear_permiso');
-    Route::get('menu', 'MenuController@index')->name('menu');
-    Route::get('menu/crear', 'MenuController@crear')->name('crear_menu');
-    Route::post('menu', 'MenuController@guardar')->name('guardar_menu');
-});
+    Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
+        Route::get('permiso', 'PermisoController@index')->name('permiso');
+        Route::get('permiso/crear', 'PermisoController@crear')->name('crear_permiso');
+        Route::get('menu', 'MenuController@index')->name('menu');
+        Route::get('menu/crear', 'MenuController@crear')->name('crear_menu');
+        Route::post('menu', 'MenuController@guardar')->name('guardar_menu');
+    });
+
+//});
