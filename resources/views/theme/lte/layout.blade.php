@@ -18,9 +18,10 @@
 
         <link rel="shortcut icon" href="{{asset("assets/$theme/dist/img/biblioteca.png")}}" type="image/x-icon">
 
+        @yield('styles')
+
         <link rel="stylesheet" href="{{asset("assets/css/custom.css")}}">
 
-        @yield('styles')
 
     </head>
     <body class="hold-transition sidebar-mini layout-boxed">
@@ -69,5 +70,7 @@
         <script src="{{asset("assets/$theme/plugins/toastr/toastr.min.js")}}"></script>
 
         @yield('scripts')
+
+        @yield('script_plugins')
     </body>
 </html>
