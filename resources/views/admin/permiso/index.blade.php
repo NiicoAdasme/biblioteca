@@ -10,6 +10,11 @@
         <div class="card card-primary">
             <div class="card-header">
               <h3 class="card-title">Permisos</h3>
+              <div class="card-tools">
+                <a href="{{route('crear_permiso')}}" class="btn btn-block btn-success btn-sm">
+                  <i class="fa fa-fw fa-plus-circle"></i>Nuevo Permiso
+                </a>
+              </div>
             </div>
             <div class="card-body table-responsive p-0" style="height: 1400px;">
                 <table class="table table-bordered table-hover text-nowrap table-striped table-head-fixed">

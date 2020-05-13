@@ -8,14 +8,6 @@
     <link  href="{{asset("assets/js/jquery-nestable/jquery.nestable.css")}}" type="text/css" rel="stylesheet">
 @endsection
 
-@section('script_plugins')
-    <script src="{{asset('assets/js/jquery-nestable/jquery.nestable.js')}}" type="text/javascript"></script>
-@endsection
-
-@section('scripts')
-    <script src="{{asset('assets/pages/scripts/admin/menu/index.js')}}" type="text/javascript"></script>
-@endsection
-
 @section('contenido')
 <div class="row">
     <div class="col-lg-12">
@@ -23,6 +15,11 @@
         <div class="box box-success">
             <div class="box-header with-border">
                 <h3 class="box-title">Menús</h3>
+                <div class="card-tools">
+                    <a href="{{route('crear_menu')}}" class="btn btn-block btn-success btn-sm">
+                      <i class="fa fa-fw fa-plus-circle"></i>Nuevo Menú
+                    </a>
+                </div>
             </div>
             <div class="box-body">
                 @csrf
@@ -40,4 +37,9 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    <script src="{{asset('assets/pages/scripts/admin/menu/nestable.js')}}" type="text/javascript"></script>
+    <script src="{{asset('assets/js/jquery-nestable/jquery.nestable.js')}}" type="text/javascript"></script>
 @endsection

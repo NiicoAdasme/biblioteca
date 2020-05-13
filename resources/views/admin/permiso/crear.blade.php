@@ -12,6 +12,11 @@
             <div class="card card-success">
                 <div class="card-header">
                     <h3 class="card-title">Crear Permiso</h3>
+                    <div class="card-tools">
+                      <a href="{{route('permiso')}}" class="btn btn-block btn-info btn-sm">
+                        <i class="fa fa-fw fa-reply-all"></i>Volver
+                      </a>
+                  </div>
                 </div>
                 <form role="form">
                     <div class="card-body">

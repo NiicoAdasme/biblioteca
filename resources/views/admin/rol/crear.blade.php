@@ -1,29 +1,29 @@
 @extends("theme.$theme.layout")
 
 @section('titulo')
-  Crear Menú
+  Crear Rol
 @endsection
 
 @section('contenido')
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12">
-            @include('includes.form-error')
             @include('includes.form-mensaje')
+            @include('includes.form-error')
             <!-- general form elements -->
             <div class="card card-success">
                 <div class="card-header">
-                    <h3 class="card-title">Crear Menú</h3>
+                    <h3 class="card-title">Crear Rol</h3>
                     <div class="card-tools">
-                      <a href="{{route('menu')}}" class="btn btn-block btn-info btn-sm">
-                        <i class="fa fa-fw fa-reply-all"></i>Volver
-                      </a>
-                  </div>
+                        <a href="{{route('rol')}}" class="btn btn-block btn-info btn-sm">
+                          <i class="fa fa-fw fa-reply-all"></i>Volver
+                        </a>
+                    </div>
                 </div>
-            <form action="{{route('guardar_menu')}}" role="form" method="POST" id="quickForm" autocomplete="off">
+            <form action="{{route('guardar_rol')}}" role="form" method="POST" id="quickForm" autocomplete="off">
                     @csrf
                     <div class="card-body">
-                        @include('admin.menu.form')
+                        @include('admin.rol.form')
                     </div>
                     <div class="card-footer">
                         @include('includes.boton-form-crear')
@@ -48,28 +48,14 @@
       $('#quickForm').validate({
         rules: {
           nombre: {
-            required: true
-          },
-          url: {
             required: true,
             maxlength: 50
-          },
-          icono: {
-            required: true,
-            maxlength: 50
-          },
+          } 
         },
         messages: {
           nombre: {
-            required: "Por favor ingrese un nombre"
-          },
-          url: {
-            required: "Por favor ingrese una URL",
+            required: "Por favor ingrese un nombre",
             maxlength: "El maximo de caracteres es 50"
-          },
-          icono: {
-              required: "Por favor ingrese un icono",
-              maxlength: "El maximo de caracteres es 50"
           }
         },
         errorElement: 'span',
