@@ -1,8 +1,9 @@
 <?php
 
 use App\Admin\Rol;
-use Illuminate\Routing\Route as RoutingRoute;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Routing\Route as RoutingRoute;
 use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
 
 /*
@@ -30,6 +31,7 @@ Evito recordar la url que es admin/sistema/permiso {{url(''admin/sistema/permiso
 
 //Route::group(array('https'), function () {
     Route::get('/', 'InicioController@index');
+    Route::get('/laravel','InicioController@laravel');
     //Route::get('permiso', 'Admin\PermisoController@index')->name('permiso');
 
     Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
@@ -53,3 +55,6 @@ Evito recordar la url que es admin/sistema/permiso {{url(''admin/sistema/permiso
     });
 
 //});
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -1,11 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Seguridad;
 
+use App\Http\Controllers\Controller;
+use Illuminate\Auth\Authenticatable;
 use Illuminate\Http\Request;
 
-class InicioController extends Controller
+class LoginController extends Controller
 {
+    use Authenticatable;
     /**
      * Display a listing of the resource.
      *
@@ -13,11 +16,7 @@ class InicioController extends Controller
      */
     public function index()
     {
-        return view('inicio');
-    }
-
-    public function laravel(){
-        return view('welcome');
+        //
     }
 
     /**
