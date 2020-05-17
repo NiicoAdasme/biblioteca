@@ -30,11 +30,14 @@ Route::get('admin/sistema/permiso/{nombre?}/{edad?}', 'PermisoController@index')
 Evito recordar la url que es admin/sistema/permiso {{url(''admin/sistema/permiso)}}*/
 
 //Route::group(array('https'), function () {
-    Route::get('/', 'InicioController@index');
+    Route::get('/', 'InicioController@index')->name('inicio');
+    Route::get('seguridad/login','Seguridad\LoginController@index')->name('login');
+    Route::post('seguridad/login','Seguridad\LoginController@login')->name('login_post');
     Route::get('/laravel','InicioController@laravel');
     //Route::get('permiso', 'Admin\PermisoController@index')->name('permiso');
 
-    Route::group(['prefix' => 'admin','namespace' => 'Admin'], function () {
+    Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => 'auth'], function () {
+        Route::get('','AdminController@index');
         Route::get('permiso', 'PermisoController@index')->name('permiso');
         Route::get('permiso/crear', 'PermisoController@crear')->name('crear_permiso');
         // RUTAS DEL MENÚ
@@ -55,6 +58,6 @@ Evito recordar la url que es admin/sistema/permiso {{url(''admin/sistema/permiso
     });
 
 //});
-Auth::routes();
+//Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
