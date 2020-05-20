@@ -37,7 +37,7 @@
             </ul>
         </div>
         @endif
-      <form action="{{route('login_post')}}" method="post" autocomplete="off">
+      <form action="{{route('login')}}" method="post" autocomplete="off">
         @csrf
         <div class="input-group mb-3">
           <input type="text" name="usuario" class="form-control" placeholder="Usuario" autofocus value="{{old('usuario')}}">
@@ -64,7 +64,7 @@
           <!-- /.col -->
         </div>
       </form>
-
+      <a href="{{route('register')}} " class="text-center">Crea una cuenta</a>
     </div>
     <!-- /.login-card-body -->
   </div>

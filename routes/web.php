@@ -31,12 +31,16 @@ Evito recordar la url que es admin/sistema/permiso {{url(''admin/sistema/permiso
 
 //Route::group(array('https'), function () {
     Route::get('/', 'InicioController@index')->name('inicio');
-    Route::get('seguridad/login','Seguridad\LoginController@index')->name('login');
-    Route::post('seguridad/login','Seguridad\LoginController@login')->name('login_post');
+    Route::get('/home','InicioController@index')->name('home');
+    Route::get('/inicio','InicioController@index');
+
+    //Route::get('seguridad/login','Seguridad\LoginController@index')->name('login');
+    //Route::post('seguridad/login','Seguridad\LoginController@login')->name('login_post');
     Route::get('/laravel','InicioController@laravel');
     //Route::get('permiso', 'Admin\PermisoController@index')->name('permiso');
+    //Route::get('/home', 'HomeController@index')->name('home');
 
-    Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => 'auth'], function () {
+    Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['auth','superadmin']], function () {
         Route::get('','AdminController@index');
         Route::get('permiso', 'PermisoController@index')->name('permiso');
         Route::get('permiso/crear', 'PermisoController@crear')->name('crear_permiso');
@@ -58,6 +62,12 @@ Evito recordar la url que es admin/sistema/permiso {{url(''admin/sistema/permiso
     });
 
 //});
-//Auth::routes();
+// RUTAS DE AUTENTICACIÓN
+Auth::routes();
+Route::group(['namespace' => 'Auth'], function () {
+    Route::get('registro','RegisterController@showRegistrationForm')->name('register');
+    Route::get('iniciar-sesion','LoginController@showLoginForm')->name('login');
+    Route::post('registro','RegisterController@register');
+    Route::post('iniciar-sesion','LoginController@login');
+});
 
-Route::get('/home', 'HomeController@index')->name('home');
