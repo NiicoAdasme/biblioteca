@@ -7,4 +7,7 @@ $(document).ready(function(){
         }, timeout);
     });
 
+    $('ul.nav').find('li.menu-open').children('a').addClass('active');
+    
+    
 });

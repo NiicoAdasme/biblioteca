@@ -80,6 +80,8 @@
 
         <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
+        <script src="{{asset("assets/js/dismissAlert.js")}}"></script>
+
         @yield('scripts')
 
     </body>

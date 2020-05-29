@@ -18,6 +18,8 @@ class CrearTablaUsuario extends Migration
             $table->string('usuario',255);
             $table->string('password',255);
             $table->string('nombre',255);
+            $table->string('email_verified_at',255)->nullable();
+            $table->string('remember_token',255)->nullable();
             $table->timestamps();
             $table->charset = 'utf8mb4';
             $table->collation = 'utf8mb4_spanish_ci';

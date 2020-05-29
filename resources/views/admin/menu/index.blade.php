@@ -16,7 +16,7 @@
             <div class="box-header with-border">
                 <h3 class="box-title">Menús</h3>
                 <div class="card-tools">
-                    <a href="{{route('crear_menu')}}" class="btn btn-block btn-success btn-sm">
+                    <a href="{{route('crear_menu')}}" class="btn btn-block btn-success btn-sm float-right">
                       <i class="fa fa-fw fa-plus-circle"></i>Nuevo Menú
                     </a>
                 </div>
@@ -42,4 +42,8 @@
 @section('scripts')
     <script src="{{asset('assets/pages/scripts/admin/menu/nestable.js')}}" type="text/javascript"></script>
     <script src="{{asset('assets/js/jquery-nestable/jquery.nestable.js')}}" type="text/javascript"></script>
+    <script src="{{asset("assets/js/funciones.js")}}"></script>
+    <script src="{{asset("assets/js/alertas.js")}}"></script>
+    <script src="{{asset("assets/js/dismissAlert.js")}}"></script>
+
 @endsection

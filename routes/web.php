@@ -1,7 +1,9 @@
 <?php
 
 use App\Admin\Rol;
+use App\Mail\PruebaCorreo;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\Route as RoutingRoute;
 use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
@@ -29,9 +31,19 @@ Route::get('admin/sistema/permiso/{nombre?}/{edad?}', 'PermisoController@index')
 /* Lo referencio como {{route('permiso')}} en la view
 Evito recordar la url que es admin/sistema/permiso {{url(''admin/sistema/permiso)}}*/
 
+// Ruta de prueba de envio de correo
+/*Route::get('/sendmail', function () {
+    $detalles= [
+        'title' => 'Correo desde: Sistema de Biblioteca',
+        'body' => 'Prueba de correo desde laravel'
+    ];
+    Mail::to('nicolas.wladimir@gmail.com')->send(new PruebaCorreo($detalles));
+    echo "correo enviado correctamente";
+});*/
+
 //Route::group(array('https'), function () {
     Route::get('/', 'InicioController@index')->name('inicio');
-    Route::get('/home','InicioController@index')->name('home');
+    Route::get('/home','InicioController@index')->name('home')->middleware('verified');
     Route::get('/inicio','InicioController@index');
 
     //Route::get('seguridad/login','Seguridad\LoginController@index')->name('login');
@@ -49,6 +61,9 @@ Evito recordar la url que es admin/sistema/permiso {{url(''admin/sistema/permiso
         Route::get('menu/crear', 'MenuController@crear')->name('crear_menu');
         Route::post('menu', 'MenuController@guardar')->name('guardar_menu');
         Route::post('menu/guardar-orden', 'MenuController@guardarOrden')->name('guardar_orden');
+        Route::get('menu/{id}/editar','MenuController@editar')->name('editar_menu');
+        Route::put('menu/{id}','MenuController@actualizar')->name('actualizar_menu');
+        Route::delete('menu/{id}','MenuController@eliminar')->name('eliminar_menu');
         // RUTAS DEL ROL
         Route::get('rol', 'RolController@index')->name('rol');
         Route::get('rol/crear', 'RolController@crear')->name('crear_rol');
@@ -64,10 +79,11 @@ Evito recordar la url que es admin/sistema/permiso {{url(''admin/sistema/permiso
 //});
 // RUTAS DE AUTENTICACIÓN
 Auth::routes();
+Auth::routes(['verify' => true]);
+
 Route::group(['namespace' => 'Auth'], function () {
     Route::get('registro','RegisterController@showRegistrationForm')->name('register');
     Route::get('iniciar-sesion','LoginController@showLoginForm')->name('login');
     Route::post('registro','RegisterController@register');
     Route::post('iniciar-sesion','LoginController@login');
 });
-

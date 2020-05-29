@@ -15,4 +15,22 @@ $(document).ready(function (){
     });
     $('#nestable').nestable('expandAll');
 
+    $('.eliminar-menu').on('click',function (){
+        event.preventDefault();
+        const url= $(this).attr('href');
+        swal({
+            title: '¿Seguro que desea eliminar este registro?',
+            text: "Esta acción no se puede deshacer",
+            icon: 'warning',
+            buttons: {
+              cancel: "Cancelar",
+              confirm: "Aceptar"
+            },
+          }).then((value)=>{
+            if(value){
+                document.getElementById('form-eliminar').submit();
+            }
+          });
+    });
+
 });

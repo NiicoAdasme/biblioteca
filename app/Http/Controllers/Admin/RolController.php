@@ -88,7 +88,4 @@ class RolController extends Controller
         
     }
 
-    public function prueba(){
-        return view('admin.rol.prueba');
-    }
 }

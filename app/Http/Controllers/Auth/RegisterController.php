@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
 use App\Models\Usuario;
-use App\Providers\RouteServiceProvider;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -59,10 +60,21 @@ class RegisterController extends Controller
     
     protected function create(array $data)
     {
-        return Usuario::create([
+        $usuario= Usuario::create([
             'nombre' => $data['nombre'],
             'usuario' => $data['usuario'],
             'password' => Hash::make($data['password']),
         ]);
+
+        
+        $id_ultimo_usuario= Usuario::orderBy('id','desc')->take(1)->get('id')->toArray();
+        //$user= Usuario::find($id_ultimo_usuario[0]["id"]);
+        //$user->roles()->attach(2,1);
+        DB::table('usuario_rol')->insert([
+            'rol_id' => 2,
+            'usuario_id' => $id_ultimo_usuario[0]["id"],
+            'estado' => 1
+        ]);
+        return $usuario;
     }
 }
