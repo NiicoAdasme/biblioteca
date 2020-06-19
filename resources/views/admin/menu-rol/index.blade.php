@@ -29,8 +29,8 @@
                                   @break
                                 @endif
                                 <tr>
-                                  <td class="font-weight-bold pl-0"><i class="fa fa-arrows-alt"></i>{{$menu["nombre"]}}</td>
-                                  @foreach ($roles as $id => $nombre)
+                                    <td class="font-weight-bold pl-0"><i class="fa fa-arrows-alt"></i>{{$menu["nombre"]}}</td>
+                                    @foreach ($roles as $id => $nombre)
                                     <td class="text-center">
                                         <input type="checkbox"
                                         name="menu_rol[]" 

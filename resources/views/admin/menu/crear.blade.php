@@ -20,7 +20,7 @@
                       </a>
                   </div>
                 </div>
-            <form action="{{route('guardar_menu')}}" role="form" method="POST" id="quickForm" autocomplete="off">
+              <form action="{{route('guardar_menu')}}" role="form" method="POST" id="quickForm" autocomplete="off">
                     @csrf
                     <div class="card-body">
                         @include('admin.menu.form')
@@ -28,7 +28,7 @@
                     <div class="card-footer">
                         @include('includes.boton-form-crear')
                     </div>
-                  </form>
+              </form>
             </div>
         </div>
     </div>

@@ -53,9 +53,18 @@ Evito recordar la url que es admin/sistema/permiso {{url(''admin/sistema/permiso
     //Route::get('/home', 'HomeController@index')->name('home');
 
     Route::group(['prefix' => 'admin','namespace' => 'Admin','middleware' => ['auth','superadmin']], function () {
+        // index administrador
         Route::get('','AdminController@index');
+        // RUTAS DE PERMISO
         Route::get('permiso', 'PermisoController@index')->name('permiso');
         Route::get('permiso/crear', 'PermisoController@crear')->name('crear_permiso');
+        Route::post('permiso/crear','PermisoController@guardar')->name('guardar_permiso');
+        Route::get('permiso/{id}/editar','PermisoController@editar')->name('editar_permiso');
+        Route::put('permiso/{id}','PermisoController@actualizar')->name('actualizar_permiso');
+        Route::delete('permiso/{id}','PermisoController@eliminar')->name('eliminar_permiso');
+        // RUTAS PERMISO - ROL
+        Route::get('permiso-rol','PermisoRolController@index')->name('permiso_rol');
+        Route::post('permiso-rol','PermisoRolController@guardar')->name('guardar_permiso_rol');
         // RUTAS DEL MENÚ
         Route::get('menu', 'MenuController@index')->name('menu');
         Route::get('menu/crear', 'MenuController@crear')->name('crear_menu');

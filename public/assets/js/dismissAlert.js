@@ -7,7 +7,8 @@ $(document).ready(function(){
         }, timeout);
     });
 
-    $('ul.nav').find('li.menu-open').children('a').addClass('active');
+    $('ul.nav').find('a.active').parents('ul').parents('li').children('a').addClass('active');
+    $('ul.nav').find('a.active').parents('li').addClass('menu-open');
     
     
 });

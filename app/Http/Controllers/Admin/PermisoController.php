@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ValidacionPermiso;
+use App\Http\Requests\ValidacionPermisoEditar;
 use App\Models\Admin\Permiso;
 use Illuminate\Http\Request;
 
@@ -35,20 +37,10 @@ class PermisoController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function guardar(Request $request)
+    public function guardar(ValidacionPermiso $request)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function mostrar($id)
-    {
-        //
+        Permiso::create($request->all());
+        return redirect('admin/permiso')->with('mensaje','Permiso creado correctamente');
     }
 
     /**
@@ -59,7 +51,8 @@ class PermisoController extends Controller
      */
     public function editar($id)
     {
-        //
+        $permiso= Permiso::findOrFail($id);
+        return view('admin.permiso.editar', compact('permiso'));
     }
 
     /**
@@ -69,9 +62,10 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function actualizar(Request $request, $id)
+    public function actualizar(ValidacionPermisoEditar $request, $id)
     {
-        //
+        Permiso::findOrFail($id)->update($request->all());
+        return redirect('admin/permiso')->with('mensaje','Permiso actualizado correctamente');
     }
 
     /**
@@ -80,8 +74,16 @@ class PermisoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function eliminar($id)
+    public function eliminar(Request $request,$id)
     {
-        //
+        if($request->ajax()){
+            if(Permiso::destroy($id)){
+                return response()->json(['mensaje'=> 'ok']);
+            }else{
+                return response()->json(['mensaje'=> 'ng']);
+            }
+        }else{
+            abort(404);
+        }
     }
 }
